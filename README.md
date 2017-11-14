@@ -1,4 +1,4 @@
-# osprey
+# vue-example
 
 > A Vue.js project
 
