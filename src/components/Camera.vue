@@ -44,7 +44,7 @@ export default {
       this.loading = true
       this.error = false
       let cameraId = this.cameraId
-      if (this.$route.params.cameraId) {
+      if (this.$route && this.$route.params.cameraId) {
         cameraId = this.$route.params.cameraId
       }
       CameraApi.default.getCamera(cameraId).then(camera => {
@@ -70,7 +70,7 @@ export default {
         this.$emit('camera-loaded', this.cameraData)
         this.loading = false
       }, error => {
-        this.loadingTries = this.loadingAttempts + 1
+        this.loadingTries = this.loadingTries + 1
         if (this.loadingTries > 5) {
           this.loading = false
           this.error = error.body.statusText

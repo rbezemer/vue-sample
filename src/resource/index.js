@@ -13,9 +13,7 @@ Vue.http.interceptors.unshift((request, next) => {
     let fragments = request.url.split('/')
     if (fragments[1] === 'camera') {
       // simulate random failure
-      if ((Math.random() > 0.5)) {
-        next(request.respondWith({status: 500, statusText: 'Oh no! Internal Server Error!'}))
-      }
+
       if (fragments[2] === 'test-data-good') {
         next(
           request.respondWith(
@@ -33,6 +31,9 @@ Vue.http.interceptors.unshift((request, next) => {
       } else if (fragments[2] === 'test-data-bad') {
         next(request.respondWith({status: 500, statusText: 'Oh no! Internal Server Error!'}))
         return
+      }
+      if (Math.random() > 0.5) {
+        next(request.respondWith({status: 500, statusText: 'Oh no! Internal Server Error!'}))
       }
       AppHelpers.populateImageData().then((images) => {
         let cameraData = {
