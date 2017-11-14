@@ -1,4 +1,7 @@
 export default {
+  /**
+   * Creates a standard guid for id's
+   **/
   createGuid () {
     function s4 () {
       return Math.floor((1 + Math.random()) * 0x10000)
@@ -8,9 +11,15 @@ export default {
     return s4() + s4() + '-' + s4() + '-' + s4() + '-' +
       s4() + '-' + s4() + s4() + s4()
   },
+  /**
+   * Generates a random int between min and max
+   **/
   getRandomInt (min, max) {
     return Math.floor(Math.random() * (max - min + 1)) + min
   },
+  /**
+   * Generates fake image data for testing purposes
+   **/
   populateImageData () {
     return new Promise((resolve, reject) => {
       let imageData = []

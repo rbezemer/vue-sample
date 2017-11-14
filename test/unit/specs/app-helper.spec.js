@@ -1,6 +1,6 @@
 import AppHelpers from '../../../src/utils/app-helpers'
 
-describe('Camera.vue', () => {
+describe('AppHelpers Utils', () => {
   it('should create a guid', () => {
     expect(AppHelpers.createGuid().length).toBe(16)
   })
